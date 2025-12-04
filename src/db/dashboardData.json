@@ -1,0 +1,39 @@
+{
+  "stats": {
+    "totalOrders": 24,
+    "totalSpent": 2489.47,
+    "pendingOrders": 2
+  },
+  "recentOrders": [
+    {
+      "id": "ORD-001",
+      "date": "2025-11-25",
+      "status": "Entregado",
+      "items": 3,
+      "total": 149.99,
+      "statusVariant": "success"
+    },
+    {
+      "id": "ORD-002",
+      "date": "2025-11-28",
+      "status": "En tránsito",
+      "items": 2,
+      "total": 89.5,
+      "statusVariant": "info"
+    },
+    {
+      "id": "ORD-003",
+      "date": "2025-11-29",
+      "status": "Procesando",
+      "items": 1,
+      "total": 249.99,
+      "statusVariant": "warning"
+    }
+  ],
+  "userAddress": {
+    "street": "Calle Falsa 123, Apto 4B",
+    "city": "Springfield",
+    "postalCode": "12345",
+    "country": "EE. UU."
+  }
+}

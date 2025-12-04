@@ -1,0 +1,80 @@
+{
+    "stats": [
+      {
+        "icon": "DollarSign",
+        "title": "Ingresos Totales",
+        "value": "$48,574",
+        "trend": { "value": 12.5, "dir": "up" }
+      },
+      {
+        "icon": "ShoppingCart",
+        "title": "Pedidos",
+        "value": "1,258",
+        "trend": { "value": 8.2, "dir": "up" }
+      },
+      {
+        "icon": "Users",
+        "title": "Clientes",
+        "value": "8,492",
+        "trend": { "value": 5.7, "dir": "up" }
+      },
+      {
+        "icon": "Package",
+        "title": "Productos",
+        "value": "342",
+        "trend": { "value": 3.1, "dir": "down" }
+      }
+    ],
+    "salesData": [
+      { "name": "Ene", "ventas": 4000, "pedidos": 240 },
+      { "name": "Feb", "ventas": 3000, "pedidos": 180 },
+      { "name": "Mar", "ventas": 5000, "pedidos": 320 },
+      { "name": "Abr", "ventas": 4500, "pedidos": 280 },
+      { "name": "May", "ventas": 6000, "pedidos": 390 },
+      { "name": "Jun", "ventas": 5500, "pedidos": 350 },
+      { "name": "Jul", "ventas": 7000, "pedidos": 450 }
+    ],
+    "categorySalesComparison": [
+      { "name": "Hombre", "ventas": 4250 },
+      { "name": "Mujer", "ventas": 5800 },
+      { "name": "Accesorios", "ventas": 2100 }
+    ],
+    "topProducts": [
+      {
+        "id": "eed07837-54d1-4341-9bd7-a9c24e830977",
+        "title_es": "Harry JPB - Negro",
+        "img": "https://www.shoepassion.eu/cdn/shop/files/HS_M_Harry-JPB-043-black_01_600x.jpg",
+        "sold": 132,
+        "revenue": 10546.68
+      },
+      {
+        "id": "5e9dd0a0-f7b6-408f-b2a0-d353962a1c28",
+        "title_es": "Harry JPB - Verde oscuro",
+        "img": "https://www.shoepassion.eu/cdn/shop/files/HS_M_Harry-JPB-043A-dark_green_01_600x.jpg",
+        "sold": 98,
+        "revenue": 12728.02
+      },
+      {
+        "id": "657756f2-8be6-4163-b59f-4ddae157a6bc",
+        "title_es": "Harry PD - Negro",
+        "img": "https://www.shoepassion.eu/cdn/shop/files/HS_M_Harry-PD-043-black_01_600x.jpg",
+        "sold": 85,
+        "revenue": 7641.5
+      },
+      {
+        "id": "8f1c3a9b-2d4e-4f2a-8c6b-9e5d1a3c7f2b",
+        "title_es": "Premium Leather Oxford",
+        "img": "https://www.shoepassion.eu/cdn/shop/files/HS_M_Oxford-Premium_01_600x.jpg",
+        "sold": 154,
+        "revenue": 7684.6
+      }
+    ],
+    "recentOrders": [
+      { "id": "ORD-1245", "customer": "Juan Pérez", "total": 299.99, "status": "Completado" },
+      { "id": "ORD-1246", "customer": "Ana Martínez", "total": 149.50, "status": "Procesando" },
+      { "id": "ORD-1247", "customer": "Carlos Ruiz", "total": 599.99, "status": "Enviado" },
+      { "id": "ORD-1248", "customer": "Laura Sánchez", "total": 89.99, "status": "Completado" },
+      { "id": "ORD-1249", "customer": "Miguel Torres", "total": 449.99, "status": "Procesando" }
+    ]
+  }
+  

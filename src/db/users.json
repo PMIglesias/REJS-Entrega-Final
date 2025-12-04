@@ -1,0 +1,60 @@
+
+[
+    {
+      "id": "admin-01",
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "adminpassword",
+      "role": "admin"
+    },
+    {
+      "id": 1,
+      "name": "User",
+      "email": "user@example.com",
+      "password": "userpassword",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Ana Martínez",
+      "email": "ana.martinez@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "name": "Carlos Ruiz",
+      "email": "carlos.ruiz@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "name": "Laura Sánchez",
+      "email": "laura.sanchez@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "name": "Miguel Torres",
+      "email": "miguel.torres@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "id": 7,
+      "name": "User",
+      "email": "user@example.com",
+      "password": "userpassword",
+      "role": "user"
+    }
+  ]
+  

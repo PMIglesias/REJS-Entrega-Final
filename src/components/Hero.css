@@ -1,0 +1,134 @@
+.Hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  --hero-max-height: calc(100vh - 72px);
+}
+
+.Hero .slides { position: relative; width: 100%; }
+
+.Hero .slide { display: none; width: 100%; }
+.Hero .slide.is-active { display: block; }
+
+.Hero .image-container {
+  position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+.Hero .image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.Hero .flickity-page-dots {
+  color: #ffffff;
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 40;
+  width: auto;
+}
+.Carousel--insideDots .flickity-page-dots {
+  position: absolute;
+  width: auto;
+  margin: 0;
+}
+@media screen and (min-width: 1008px) {
+  .Carousel--insideDots .flickity-page-dots {
+    bottom: 28px;
+    right: 24px;
+    left: auto;
+  }
+}
+.Hero .flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 1px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+  transition: transform .18s, opacity .15s;
+}
+.Hero .flickity-page-dots .dot.active {
+  transform: scale(1.35);
+  background: #fff;
+}
+.Hero .overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 820px;
+  width: calc(100% - 40px);
+  color: #fff;
+  z-index: 30;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.SectionHeader { visibility: inherit; opacity: 1; transform: none; }
+.custom_sileder_title {
+  font-size: 70px;
+  line-height: initial;
+  font-weight: normal !important;
+  color: #ffffff !important;
+  margin-bottom: 15px !important;
+  font-family: var(--slider-font-family);
+}
+@media only screen and (max-width: 600px) {
+  .custom_sileder_title {
+    font-size: 36px !important;
+    line-height: 36px !important;
+  }
+}
+.custom_sileder_subheader {
+  color: #ffffff !important;
+  font-size: 24px;
+  font-weight: normal !important;
+  margin-bottom: 15px !important;
+}
+@media only screen and (max-width: 600px) {
+  .custom_sileder_subheader { font-size: 16px !important; }
+}
+.SectionHeader__ButtonWrapper { margin-top: 8px; display:flex; justify-content:center; }
+.Hero .overlay--left-bottom .SectionHeader__ButtonWrapper { justify-content: flex-start; }
+.custom_button {
+  display: inline-block;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: 700;
+  background: #ffffff;
+  color: #000000;
+}
+
+.Hero .overlay--left-bottom {
+  left: 24px;
+  right: auto;
+  bottom: 28px;
+  top: auto;
+  transform: none;
+  max-width: 520px;
+  width: auto;
+  text-align: left;
+  padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .Hero .overlay--left-bottom { left: 16px; bottom: 18px; max-width: calc(100% - 32px); }
+}
+
+
