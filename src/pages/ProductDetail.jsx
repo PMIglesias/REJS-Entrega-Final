@@ -8,8 +8,10 @@ export default function ProductDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/catalog_shoes_store.json")
-      .then((res) => res.json())
+    import('../config/api').then(({ productsEndpoint }) => {
+      const url = productsEndpoint();
+      return fetch(url).then((res) => res.json());
+    })
       .then((data) => {
         const decodedId = (() => {
           try { return decodeURIComponent(id); } catch(e) { return id; }
@@ -38,12 +40,12 @@ export default function ProductDetail() {
   return (
     <div className="product-detail">
       <div className="product-detail__images">
-        {product.img.map((image, i) => (
+        {(product.img && product.img.length ? product.img : ['/placeholder.svg']).map((image, i) => (
           <img 
             key={i} 
-            src={image} 
+            src={image || '/placeholder.svg'} 
             alt={`${product.title_es} ${i + 1}`}
-            onError={(e) => { e.target.src = '/placeholder.svg'; }}
+            onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
           />
         ))}
       </div>

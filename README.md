@@ -1,68 +1,258 @@
+# React JS Entrega Final - Tienda de Zapatos SHOEPASSION
 
-# Shoepassion — React (Vite) Pre-entrega
+Aplicación web de e-commerce moderna construida con **React 19**, **Vite**, **MockAPI** y **Context API**.
 
+## Características
 
-- Proyecto creado con React + Vite.
-- Implementaciones principales: listado de productos, página de detalle, carrito con Context API, búsqueda con paginación, marcas/carousel, responsive layout, y rutas protegidas con un auth-demo.
-- Fuente de datos: `public/data/catalog_shoes_store_es.json` (JSON estático usado como "API" para la pre-entrega).
+### Autenticación y Carrito
+- Sistema de login y registro simulado con localStorage
+- Carrito de compras persistente con Context API
+- Rutas protegidas para usuarios autenticados
 
-## Requerimientos
+### CRUD Productos
+- Gestión completa de productos (crear, leer, actualizar, eliminar)
+- MockAPI para almacenamiento remoto
+- Validaciones de formulario
+- Modal de confirmación para eliminaciones
+- Estados de carga y error
 
-- Requerimiento #1 (Carrito básico, listado, useState, clic para agregar, mostrar carrito, layout)
-	- Carrito implementado con `CartContext` (add/remove/update, persistencia en localStorage).
-	- Componentes de listado (`Products`) y tarjetas (`ProductCard`) con botón "Agregar al carrito".
-	- Página de carrito (`/carrito`) muestra artículos, cantidades y total.
+### Búsqueda y Filtrado
+- Barra de búsqueda en tiempo real
+- Filtros por categoría (Hombre, Mujer, Accesorios)
+- Paginación de productos
 
-- Requerimiento #2 (Conexión a API, useEffect, carga/errores)
-	- Las páginas cargan productos con `fetch('/data/catalog_shoes_store_es.json')` dentro de `useEffect` y manejan `loading`/`error`.
-	- Se utiliza un JSON estático
+### Diseño Responsivo
+- Bootstrap para grid y componentes
+- Styled-components para estilos personalizados
+- Mobile-first design
+- Iconos con React Icons
 
-- Requerimiento #3 (Rutas e integración)
-	- Enrutado con React Router en `src/App.jsx` (páginas: `/`, `/productos`, `/producto/:id`, `/search`, `/men`, `/women`, `/carrito`, `/login`, `/favoritos`, `/admin`).
+### Optimizaciones
+- SEO con React Helmet
+- Accesibilidad (ARIA labels, skip links)
+- Notificaciones con React Toastify
+- Componentes styled reutilizables
 
-- Requerimiento #4 (Rutas dinámicas y protegidas) 
-	- Ruta dinámica para detalle de producto: `/producto/:id`.
-	- Rutas protegidas implementadas usando `AuthContext` y `ProtectedRoute` para `/carrito` y `/admin`.
-	- Autenticación actual: acepta cualquier usuario y contraseña no vacíos y persiste en `localStorage`.
-	
+## Requisitos
 
-### Funcionalidades adicionales implementadas
-- Paginación de productos y de resultados de búsqueda (20 por página).
-- Brands carousel y mapeo explícito de nombres para búsqueda por marca.
-- Product detail: muestra descripción y especificaciones.
-- Responsive improvements: header search oculto en mobile (queda en drawer), footer responsive, collection grid responsive.
-- Product detail layout: imágenes en columna con scroll interno y columna de información sticky.
+- Node.js 18+
+- npm o yarn
 
-## Tecnologías usadas
-- React 19 (via Vite)
-- Vite (dev server, build)
-- React Router Dom (routing)
-- Plain CSS (component and global styles in `src/styles/globals.css`)
-- LocalStorage para persistencia (carrito, favoritos, auth)
+## Instalación
 
-## Cómo ejecutar (desarrollo)
-
-1. Clona el repositorio y entra en la carpeta del proyecto:
-```powershell
-git clone https://github.com/PMIglesias/REJS-Pre-Entrega
-cd "REJS-Pre-Entrega"
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/PMIglesias/REJS-Entrega-Final.git
+cd REJS-Entrega-Final
 ```
-2. Instala dependencias (Windows / PowerShell):
-```powershell
+
+2. **Instalar dependencias**
+```bash
 npm install
 ```
-3. Inicia el servidor de desarrollo:
-```powershell
+
+3. **Configurar variables de entorno**
+```bash
+cp .env.example .env
+```
+
+Edita `.env` y reemplaza `VITE_API_BASE_URL` con la URL de MockAPI:
+```
+VITE_API_BASE_URL=https://69323a92e5a9e342d26e47cd.mockapi.io/api/v1
+```
+
+4. **Iniciar servidor de desarrollo**
+```bash
 npm run dev
 ```
-4. Abre en el navegador la URL que indique Vite (por defecto http://localhost:5173).
 
-## Cómo probar las piezas clave rápidamente
-- Listado de productos: `/accesories` o `/men` `/women`.
-- Detalle de producto: haz click en una card o abre `/producto/<id>`.
-- Agregar al carrito: desde la tarjeta (`ProductCard`) o desde el detalle (`ProductDetail`) — comprueba `/carrito` o `localStorage.getItem('cart')`.
-- Rutas protegidas: abrir `/carrito` o `/admin` sin estar autenticado redirige a `/login`. En `/login` ingresa cualquier usuario y contraseña para acceder.
+La aplicación se abrirá en `http://localhost:5175`
 
-Diseñado y desarrollado por Pablo M. Iglesias
+## Estructura del Proyecto
 
-Argentina 2025
+```
+src/
+├── App.jsx                    # Componente principal
+├── main.jsx                   # Punto de entrada
+├── components/
+│   ├── Header.jsx            # Navbar
+│   ├── Footer.jsx            # Footer
+│   ├── ProductCard.jsx       # Tarjeta de producto
+│   ├── ProductCardStyled.jsx # Tarjeta con styled-components
+│   ├── Modal.jsx             # Modal reutilizable
+│   ├── HelmetTags.jsx        # SEO con React Helmet
+│   ├── Accessibility.jsx     # Componentes accesibles
+│   └── userDashboard/        # Dashboard de usuario
+├── pages/
+│   ├── Home.jsx
+│   ├── Products.jsx
+│   ├── ProductDetail.jsx
+│   ├── CartPage.jsx
+│   ├── Login.jsx
+│   ├── Register.jsx
+│   ├── AdminDashboard.jsx
+│   ├── Contact.jsx
+│   ├── FAQ.jsx
+│   ├── ShippingReturns.jsx
+│   └── OrderTracking.jsx
+├── context/
+│   ├── AuthContext.jsx       # Autenticación
+│   ├── CartContext.jsx       # Carrito
+│   └── FavContext.jsx        # Favoritos
+├── styles/
+│   ├── globals.css
+│   ├── GlobalStyles.js       # Styled components reutilizables
+│   └── AdminDashboardStyles.js
+├── config/
+│   └── api.js                # Configuración de API
+└── db/
+    ├── users.json
+    ├── orders.json
+    └── adminData.json
+```
+## Autenticación
+
+### Usuario Demo
+- **Email:** user@example.com
+- **Contraseña:** userpassword
+
+### Admin Demo
+- **Email:** admin@example.com
+- **Contraseña:** adminpassword
+
+Los datos se almacenan en localStorage. Al cerrar sesión, se limpian automáticamente.
+
+## Gestión del Carrito
+
+El carrito se gestiona globalmente con **CartContext**:
+- Agregar productos
+- Eliminar productos individuales
+- Vaciar carrito completo
+- Persistencia en localStorage
+
+## Admin Panel
+
+Accede al panel administrativo desde la cuenta de admin:
+- **URL:** `/admin-dashboard`
+- Gestiona productos (CRUD completo)
+- Visualiza usuarios y pedidos
+- Estadísticas de ventas
+
+### Validaciones
+- Nombre obligatorio
+- Precio mayor a 0
+- Descripción opcional
+
+##  Datos
+
+### Acceso a MockAPI
+URL configurada en `.env`:
+```
+VITE_API_BASE_URL=https://69323a92e5a9e342d26e47cd.mockapi.io/api/v1
+```
+
+Contiene 90 productos (30 zapatos hombre, 30 zapatos mujer, 30 accesorios).
+
+##  Diseño
+
+### Styled Components
+- `GlobalStyles.js` - Componentes reutilizables (Button, Card, Input, etc.)
+- `AdminDashboardStyles.js` - Estilos del panel
+- `ProductCardStyled.jsx` - Tarjeta de producto personalizada
+
+### Bootstrap
+Sistema de grillas responsivo para layouts adaptables.
+
+##  Accesibilidad
+
+La aplicación incluye:
+- **ARIA labels** en botones y formularios
+- **Form validation** con mensajes de error accesibles
+- **Semantic HTML** (nav, main, section, etc.)
+- **Keyboard navigation** completa
+
+### Componentes Accesibles
+```javascript
+<AccessibleButton ariaLabel="Agregar al carrito">Comprar</AccessibleButton>
+<AccessibleInput ariaLabel="Buscar productos" />
+<AccessibleCheckbox ariaLabel="Filtrar por categoría" />
+```
+
+##  SEO
+
+Con **React Helmet Async** (compatible con React 19) se optimizan:
+- Meta titles únicos por página
+- Meta descriptions
+- Open Graph tags
+- Keywords relevantes
+
+##  Responsividad
+
+Probado en:
+-  Desktop (1920px+)
+-  Tablet (768px - 1024px)
+-  Mobile (320px - 767px)
+
+##  Testing
+
+Para testing manual:
+```bash
+npm run dev
+```
+
+Navega por:
+1. Home page
+2. Categorías (Hombre/Mujer)
+3. Búsqueda y filtros
+4. Producto individual
+5. Login/Registro
+6. Carrito
+7. Admin panel
+
+##  Dependencias Principales
+
+```json
+{
+  "react": "^19.1.1",
+  "react-router-dom": "^7.9.4",
+  "react-bootstrap": "^2.10.10",
+  "styled-components": "^6.x",
+  "react-helmet-async": "^2.0.5",
+  "react-icons": "^5.x",
+  "react-toastify": "^9.1.3",
+  "recharts": "^3.5.1",
+  "lucide-react": "^0.555.0"
+}
+```
+
+##  Despliegue
+
+### Vercel
+```bash
+npm run build
+vercel --prod
+```
+#### URL
+
+[Rejs Entrega Final - Vercel](https://rejs-entrega-final.vercel.app/)
+
+### Netlify
+```bash
+npm run build
+netlify deploy --prod --dir=dist
+```
+
+#### URL
+
+[Rejs Entrega Final - Netlify](https://rejs-entrega-final.netlify.app/)
+
+## Notas
+
+- Los datos de usuario se cargan desde JSON local (`src/db/users.json`)
+- Los datos de productos se sincronizan con MockAPI
+- Las órdenes se almacenan en JSON local
+- El carrito es persistente con localStorage
+
+
+---
+### Desarrollado para el Curso de React JS - Talento Tech 2025 

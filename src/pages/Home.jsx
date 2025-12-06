@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import HeroHome from "../components/HeroHome";
 import ProductCard from "../components/ProductCard";
 import Brands from "../components/Brands";
+import { HomeHelmet } from "../components/HelmetTags";
+import { SkipToMainContent } from "../components/Accessibility";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("/data/catalog_shoes_store.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Error al cargar productos");
-        return res.json();
+    useEffect(() => {
+      import('../config/api').then(({ productsEndpoint }) => {
+        const url = productsEndpoint();
+        return fetch(url).then((res) => res.json());
       })
       .then((data) => {
         setProducts(data);
@@ -40,8 +41,11 @@ export default function Home() {
   const accessories = sample(products, "accessories");
 
   return (
-    <main className="home">
-      <HeroHome />
+    <>
+      <HomeHelmet />
+      <SkipToMainContent />
+      <main className="home" id="main-content">
+        <HeroHome />
 
       <section className="collections">
         <div className="collection">
@@ -74,5 +78,6 @@ export default function Home() {
 
       <Brands />
     </main>
+    </>
   );
 }

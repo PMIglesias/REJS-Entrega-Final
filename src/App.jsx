@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Contact from "./pages/Contact";
 import Fav from "./pages/Fav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -19,15 +20,21 @@ import UserProfile from "./components/userDashboard/UserProfile";
 import UserAddresses from "./components/userDashboard/UserAddresses";
 import UserPaymentMethods from "./components/userDashboard/UserPaymentMethods";
 import UserPreferences from "./components/userDashboard/UserPreferences";
+import ShippingReturns from "./pages/ShippingReturns";
+import OrderTracking from "./pages/OrderTracking";
+import FAQ from "./pages/FAQ";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <>
+    <div className="app-root">
+      <ScrollToTop />
       <Header />
-      <Routes>
+      <main className="app-main">
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Products />} />
-  <Route path="/search" element={<SearchResults />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/men" element={<Products defaultTab="men" />} />
         <Route path="/women" element={<Products defaultTab="women" />} />
         <Route path="/accessories" element={<Products defaultTab="accessories" />} />
@@ -67,9 +74,14 @@ function App() {
           <Route path="preferences" element={<UserPreferences />} />
         </Route>
         <Route path="/favoritos" element={<Fav />} />
-      </Routes>
+        <Route path="/contacto" element={<Contact />} />
+        <Route path="/envios-devoluciones" element={<ShippingReturns />} />
+        <Route path="/seguimiento" element={<OrderTracking />} />
+        <Route path="/faqs" element={<FAQ />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

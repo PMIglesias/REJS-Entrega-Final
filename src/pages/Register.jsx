@@ -23,7 +23,6 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
-    // Validaciones
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError("Por favor, completa todos los campos");
       return;
@@ -39,7 +38,6 @@ export default function Register() {
       return;
     }
 
-    // Validar formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError("Por favor, ingresa un email válido");
@@ -47,17 +45,15 @@ export default function Register() {
     }
 
     try {
-      // Cargar usuarios existentes
+
       const response = await fetch('/src/db/users.json');
       const users = await response.json();
 
-      // Verificar si el email ya existe
       if (users.some(u => u.email === formData.email)) {
         setError("Este email ya está registrado");
         return;
       }
 
-      // Crear nuevo usuario
       const newUser = {
         id: users.length + 1,
         name: formData.name,
@@ -66,8 +62,6 @@ export default function Register() {
         role: "user"
       };
 
-      // En una app real, aquí harías un POST al backend
-      // Por ahora solo mostramos mensaje de éxito
       setSuccess(true);
       setTimeout(() => {
         navigate("/login");

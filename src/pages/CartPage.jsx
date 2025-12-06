@@ -39,7 +39,7 @@ export default function CartPage() {
             <div key={item.id || item.url} className="cart-item">
               <Link to={`/producto/${encodeURIComponent(item.id || item.url)}`}>
                 <img 
-                  src={item.img[0]} 
+                  src={(item.img && item.img[0]) || '/placeholder.svg'} 
                   alt={item.title_es} 
                   className="cart-item__image"
                   onError={(e) => { e.target.src = '/placeholder.svg'; }}

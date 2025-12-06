@@ -21,7 +21,7 @@ const DashboardSummary = () => {
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1rem' }}>
-      {/* Welcome Section */}
+
       <div style={{ marginBottom: '2rem' }}>
         <h2 style={{ color: '#111827', marginBottom: '0.5rem', fontSize: '1.875rem', fontWeight: 'bold' }}>
           Bienvenido de nuevo, {user?.name || 'Usuario'}
@@ -29,7 +29,6 @@ const DashboardSummary = () => {
         <p style={{ color: '#6b7280' }}>Gestiona tus pedidos, favoritos y configuración de cuenta</p>
       </div>
 
-      {/* Stats Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
         <div style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
@@ -74,9 +73,8 @@ const DashboardSummary = () => {
         </div>
       </div>
 
-      {/* Main Content Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
-        {/* Orders Section */}
+
         <div style={{ gridColumn: 'span 2' }}>
           <div style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
             <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb' }}>
@@ -133,7 +131,6 @@ const DashboardSummary = () => {
           </div>
         </div>
 
-        {/* Profile Section */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -199,7 +196,6 @@ const DashboardSummary = () => {
         </div>
       </div>
 
-      {/* Favorites Section */}
       <div style={{ backgroundColor: '#fff', borderRadius: '0.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', marginTop: '2rem' }}>
         <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb' }}>
           <h3 style={{ color: '#111827', fontSize: '1.125rem', fontWeight: 'bold', margin: 0 }}>Mis Favoritos</h3>
@@ -220,12 +216,12 @@ const DashboardSummary = () => {
                       aspectRatio: '4/3'
                     }}>
                       <img
-                        src={product.img?.[0]}
+                        src={product.img?.[0] || '/placeholder.svg'}
                         alt={product.title_es}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }}
                         onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
                         onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                        onError={(e) => { e.target.src = '/placeholder.svg'; }}
+                        onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                       />
                       <button style={{
                         position: 'absolute',

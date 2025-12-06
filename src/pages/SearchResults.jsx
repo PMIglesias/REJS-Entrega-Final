@@ -18,19 +18,25 @@ export default function SearchResults() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/data/catalog_shoes_store.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Error al cargar productos");
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    import('../config/api').then(({ productsEndpoint }) => {
+      const url = productsEndpoint();
+      return fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error('Error al cargar productos');
+          return res.json();
+        })
+        .then((data) => {
+          setProducts(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }).catch(err => {
+      setError(err.message);
+      setLoading(false);
+    });
   }, []);
   const term = q.toLowerCase();
   const allResults = products.filter((p) => {

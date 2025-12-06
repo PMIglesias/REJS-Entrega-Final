@@ -28,7 +28,7 @@ function ProductCard({ product, showAdd = true }) {
     <div className="product-card" onClick={handleCardClick}>
       <div className="image-container">
         <img 
-          src={product.img[0]} 
+          src={(product.img && product.img[0]) || '/placeholder.svg'} 
           alt={product.title_es}
           onError={(e) => { e.target.src = '/placeholder.svg'; }}
         />

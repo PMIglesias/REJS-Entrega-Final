@@ -40,8 +40,7 @@ export function AuthProvider({ children }) {
 
   const login = (username, password) => {
     if (!username || !password) return false;
-    
-    // Buscar en los datos de usuarios por email
+
     const foundUser = usersData.find(
       u => u.email === username && u.password === password
     );
@@ -60,13 +59,21 @@ export function AuthProvider({ children }) {
     return true;
   };
 
+  const updateProfile = (updates) => {
+    setUser(prev => {
+      const next = { ...prev, ...updates };
+      try { localStorage.setItem('user', JSON.stringify(next)); } catch(e) {}
+      return next;
+    });
+  };
+
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );

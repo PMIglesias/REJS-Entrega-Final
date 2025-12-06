@@ -13,9 +13,9 @@ function Products({ defaultTab }) {
 
   useEffect(() => {
     fetch("/data/catalog_shoes_store.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Error al cargar los productos");
-        return res.json();
+    import('../config/api').then(({ productsEndpoint }) => {
+      const url = productsEndpoint();
+      return fetch(url).then((res) => res.json());
       })
       .then((data) => {
         setProducts(data);
